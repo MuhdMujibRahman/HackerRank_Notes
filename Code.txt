@@ -1,0 +1,55 @@
+Find pair
+pair=0
+    result = dict((i, ar.count(i)) for i in ar)
+    for i in list(result):
+        if result[i]>=2:
+            if result[i]%2==0:
+                pair+=result[i]/2
+            else:
+                pair+=(result[i]-1)/2
+    return int(pair)
+
+Count Valley
+def countingValleys(n, s):
+    level=valley=0
+    for i in range(n):
+        if(s[i]=='U'):
+            level+=1
+            if(level==0):
+                valley+=1
+        else:
+            level-=1
+    
+    return valley
+
+def jumpingOnClouds(c):
+    ar=c
+    end=len(c)-1
+    print(end)
+    jumps=0
+    current=0
+    while current!=end:
+        if current+   2<=end and c[current+2]==0:
+            current+=2
+            jumps+=1
+        elif c[current+1]==0:
+            current+=1
+            jumps+=1
+    return jumps
+
+def hourglassSum(A):
+    
+    smax = -900
+
+    for row in range(len(A) - 2):
+        for column in range(len(A[row]) - 2):
+            tl = A[row][column]
+            tc = A[row][column + 1]
+            tr = A[row][column + 2]
+            mc = A[row + 1][column + 1]
+            bl = A[row + 2][column]
+            bc = A[row + 2][column + 1]
+            br = A[row + 2][column + 2]
+            s = tl + tc + tr + mc + bl + bc + br
+            smax = max(s, smax)
+    return smax
